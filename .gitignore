@@ -58,12 +58,9 @@ temp/
 
 # Model checkpoints (large files)
 checkpoint-*/
-*.bin
-*.safetensors
 
 # Data files (if too large)
 *.csv
-*.json
 *.pkl
 *.joblib
 
