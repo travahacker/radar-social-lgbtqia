@@ -67,9 +67,14 @@ MIT License - Veja LICENSE para detalhes.
 
 ## 🔗 Links Relacionados
 
+### 📚 Projetos
 - [Base de Dados de Ódio LGBTQIA+](https://github.com/travahacker/base-dados-odio-lgbtqia)
 - [Hugging Face Model](https://hf.co/Veronyka/radar-social-lgbtqia)
 - [Hugging Face Dataset](https://hf.co/datasets/Veronyka/base-dados-odio-lgbtqia)
+
+### 🏳️‍🌈 Código Não Binário
+- [Site Oficial](https://codigonaobinario.org)
+- [Entre Amigues - Linktree](https://linktr.ee/entre_amigues)
 
 ## 📊 Datasets Utilizados no Treinamento
 
