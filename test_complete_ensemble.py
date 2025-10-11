@@ -130,8 +130,8 @@ def test_ensemble_system():
     print("=" * 60)
     
     # Verificar se os modelos existem
-    binary_model_dir = "out/model-binary-expanded"
-    specialized_model_dir = "out/model-specialized-expanded"
+    binary_model_dir = "model-binary-expanded"
+    specialized_model_dir = "model-specialized-expanded"
     
     if not os.path.exists(binary_model_dir):
         print(f"❌ Modelo binário não encontrado: {binary_model_dir}")
