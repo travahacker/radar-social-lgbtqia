@@ -2,22 +2,14 @@
   "version": "1.0",
   "truncation": {
     "direction": "Right",
-<<<<<<< HEAD:model-binary-expanded-with-toldbr/tokenizer.json
-    "max_length": 512,
-=======
     "max_length": 256,
->>>>>>> 46bb3445e8d19f06f8298c8ec49c3219f0b20f19:model-specialized-expanded/tokenizer.json
     "strategy": "LongestFirst",
     "stride": 0
   },
   "padding": {
-<<<<<<< HEAD:model-binary-expanded-with-toldbr/tokenizer.json
-    "strategy": "BatchLongest",
-=======
     "strategy": {
       "Fixed": 256
     },
->>>>>>> 46bb3445e8d19f06f8298c8ec49c3219f0b20f19:model-specialized-expanded/tokenizer.json
     "direction": "Right",
     "pad_to_multiple_of": null,
     "pad_id": 0,
