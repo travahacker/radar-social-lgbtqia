@@ -1,102 +1,126 @@
 ---
-license: mit
-language:
-- pt
+license: apache-2.0
+base_model: neuralmind/bert-base-portuguese-cased
 tags:
 - hate-speech-detection
-- lgbtqia
 - portuguese
-- bertimbau
-- ensemble
-pipeline_tag: text-classification
+- lgbtqia
+- binary-classification
+- transformers
+- pytorch
+language:
+- pt
+metrics:
+- accuracy
+- f1
+- precision
+- recall
+model-index:
+- name: radar-social-lgbtqia-binary-expanded
+  results:
+  - task:
+      type: text-classification
+      name: Hate Speech Detection
+    dataset:
+      type: custom
+      name: Radar Social LGBTQIA+ Expanded Dataset
+    metrics:
+    - type: accuracy
+      value: 0.8719
+    - type: f1
+      value: 0.8724
+    - type: precision
+      value: 0.8745
+    - type: recall
+      value: 0.8719
 ---
 
-# Radar Social LGBTQIA+
+# Radar Social LGBTQIA+ - Modelo Binário Expandido
 
-Sistema de detecção de discurso de ódio contra pessoas LGBTQIA+ em português brasileiro.
+## Descrição
 
-## 🎯 Objetivo
+Modelo de detecção de hate speech específico para conteúdo LGBTQIA+ em português brasileiro. Este é o modelo binário expandido, treinado com um dataset ampliado que inclui casos óbvios de hate speech e dados do ToLD-BR.
 
-Detectar e classificar discurso de ódio contra pessoas LGBTQIA+ em textos em português brasileiro, com foco especial em transfobia e assédio.
+## Performance
 
-## 🏗️ Arquitetura
+- **Accuracy**: 87.19%
+- **F1-Score**: 87.24%
+- **Precision**: 87.45%
+- **Recall**: 87.19%
 
-Sistema ensemble com dois modelos:
+## Dataset
 
-1. **Modelo Binário**: Filtra hate/não-hate (80.14% acurácia)
-2. **Modelo Especializado**: Classifica tipos específicos (99.17% acurácia)
-   - Transfobia
-   - Assédio/Insulto
+- **Total de exemplos**: 44.033
+- **Fontes**: Dataset original + casos óbvios + ToLD-BR
+- **Balanceamento**: 73.1% (57.8% não-hate / 42.2% hate)
+- **Idioma**: Português brasileiro
 
-## 🚀 Uso Rápido
+## Casos de Uso
 
-### Instalação
-```bash
-pip install transformers torch pandas scikit-learn
-```
+Detecção de hate speech direcionado à comunidade LGBTQIA+ em português brasileiro, incluindo:
 
-### Predição Simples
+- Discriminação baseada em orientação sexual
+- Discriminação baseada em identidade de gênero
+- Linguagem ofensiva e pejorativa
+- Incitação à violência contra pessoas LGBTQIA+
+
+## Exemplos de Detecção
+
+### Casos Detectados como HATE (Threshold: 15%)
+- "Ser gay é uma doença" → 99.3% HATE
+- "ser bissexual é doença" → 97.7% HATE
+- "Transgênero é anormal" → 99.4% HATE
+- "Bicha deveria morrer" → 99.6% HATE
+
+### Casos Detectados como NÃO-HATE
+- "Amo minha família LGBTQIA+" → 0.1% HATE
+- "Dia do orgulho gay é importante" → 0.1% HATE
+- "Respeito todas as orientações sexuais" → 0.3% HATE
+
+## Como Usar
+
 ```python
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 
-# Carregar modelo binário
-tokenizer = AutoTokenizer.from_pretrained("Veronyka/radar-social-lgbtqia", subfolder="model-binary-expanded")
-model = AutoModelForSequenceClassification.from_pretrained("Veronyka/radar-social-lgbtqia", subfolder="model-binary-expanded")
+# Carregar modelo
+model_name = "Veronyka/radar-social-lgbtqia"
+tokenizer = AutoTokenizer.from_pretrained(model_name, subfolder="model-binary-expanded")
+model = AutoModelForSequenceClassification.from_pretrained(model_name, subfolder="model-binary-expanded")
 
-# Predição
-text = "Texto para analisar"
-inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True)
+# Classificar texto
+text = "Seu texto aqui"
+inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True, max_length=512)
+
 with torch.no_grad():
     outputs = model(**inputs)
-    predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
-    print(f"Probabilidade de hate: {predictions[0][1]:.3f}")
+    probs = torch.softmax(outputs.logits, dim=-1)
+    hate_prob = probs[0][1].item()
+    is_hate = hate_prob >= 0.15
+
+print(f"Hate: {is_hate} ({hate_prob:.3f})")
 ```
 
-## 📊 Performance
+## Limitações
 
-- **Acurácia Binária**: 80.14%
-- **Acurácia Especializada**: 99.17%
-- **Confiança Média**: 93.9%
-- **Taxa de Processamento**: 28.9 textos/segundo
+- Treinado especificamente para português brasileiro
+- Focado em hate speech direcionado à comunidade LGBTQIA+
+- Pode não detectar adequadamente hate speech sutil ou implícito
+- Threshold de 15% pode precisar de ajuste para casos específicos
 
-## 🔒 Privacidade
+## Treinamento
 
-- Dados pessoais removidos durante treinamento
-- Apenas conteúdo linguístico preservado
-- Conformidade com LGPD/GDPR
+- **Base Model**: BERTimbau (neuralmind/bert-base-portuguese-cased)
+- **Epochs**: 3
+- **Learning Rate**: 2e-5
+- **Batch Size**: 16
+- **Optimizer**: AdamW
+- **Scheduler**: Linear
 
-## 📊 Datasets Utilizados no Treinamento
+## Contribuições
 
-### Modelos Base
-- **BERTimbau**: https://hf.co/neuralmind/bert-base-portuguese-cased
-- **Helsinki-NLP Translation**: https://hf.co/Helsinki-NLP/opus-mt-tc-big-en-pt
+Este modelo foi desenvolvido como parte do projeto Radar Social LGBTQIA+, uma iniciativa para combater hate speech online direcionado à comunidade LGBTQIA+ em português brasileiro.
 
-### Datasets Externos
-- **ToLD-BR**: https://github.com/joaoaleite/ToLD-Br/
-- **Anti-LGBT Cyberbullying**: https://www.kaggle.com/datasets/kw5454331/anti-lgbt-cyberbullying-texts/data
+## Licença
 
-### Dataset de Treinamento do BERTimbau
-- **HateBR**: https://hf.co/datasets/ruanchaves/hatebr (excluído por data leakage)
-
-### Fontes dos Dados
-- **Dados manuais**: Anotações da equipe Código Não Binário sobre o podcast Entre Amigues
-- **ToLD-BR**: Dataset brasileiro de toxicidade (GitHub)
-- **Anti-LGBT**: Dataset inglês traduzido para PT-BR (Kaggle)
-
-## 🔗 Links Relacionados
-
-- [Base de Dados de Ódio LGBTQIA+](https://github.com/travahacker/base-dados-odio-lgbtqia)
-- [Hugging Face Dataset](https://hf.co/datasets/Veronyka/base-dados-odio-lgbtqia)
-
-## 📄 Licença
-
-MIT License - Veja LICENSE para detalhes.
-
-## ⚠️ Aviso Importante
-
-Este modelo foi treinado com dados de discurso de ódio real. Use com responsabilidade e sempre considere o impacto ético de suas aplicações.
-
-## 📞 Contato
-
-Para questões sobre o modelo ou colaborações, entre em contato através das issues do repositório.
+Apache 2.0
