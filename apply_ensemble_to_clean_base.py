@@ -130,8 +130,8 @@ def apply_ensemble_to_clean_base():
     print("=" * 60)
     
     # Verificar se os modelos existem
-    binary_model_dir = "out/model-binary-expanded"
-    specialized_model_dir = "out/model-specialized-expanded"
+    binary_model_dir = "model-binary-expanded"
+    specialized_model_dir = "model-specialized-expanded"
     
     if not os.path.exists(binary_model_dir):
         print(f"❌ Modelo binário não encontrado: {binary_model_dir}")
@@ -143,7 +143,7 @@ def apply_ensemble_to_clean_base():
     
     # Carregar base limpa
     print("📊 Carregando base limpa...")
-    df = pd.read_csv('../arquivo_v2/dados/export_1757023553205_limpa.csv', sep=';')
+    df = pd.read_csv('clean-annotated-data/export_1757023553205_limpa.csv', sep=';')
     print(f"📈 Total de comentários: {len(df)}")
     
     # Inicializar sistema ensemble

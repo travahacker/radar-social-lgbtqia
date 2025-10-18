@@ -1,95 +1,73 @@
-# Radar Social LGBTQIA+
+---
+title: Radar Social LGBTQIA+
+emoji: 🏳️‍🌈
+colorFrom: pink
+colorTo: purple
+sdk: gradio
+sdk_version: 4.44.1
+app_file: app.py
+pinned: false
+license: mit
+---
 
-Sistema de detecção de discurso de ódio contra pessoas LGBTQIA+ em português brasileiro.
+# 🏳️‍🌈 Radar Social LGBTQIA+
 
-## 🎯 Objetivo
+Sistema avançado de detecção de hate speech contra a comunidade LGBTQIA+ com regras contextuais inteligentes.
 
-Detectar e classificar discurso de ódio contra pessoas LGBTQIA+ em textos em português brasileiro, com foco especial em transfobia e assédio.
+## 🚀 Funcionalidades
 
-## 🏗️ Arquitetura
-
-Sistema ensemble com dois modelos:
-
-1. **Modelo Binário**: Filtra hate/não-hate (80.14% acurácia)
-2. **Modelo Especializado**: Classifica tipos específicos (99.17% acurácia)
-   - Transfobia
-   - Assédio/Insulto
-
-## 🚀 Uso Rápido
-
-### Instalação
-```bash
-pip install -r requirements.txt
-```
-
-### Predição Simples
-```python
-from src.predict_hate_speech import predict_hate_speech
-
-result = predict_hate_speech("Texto para analisar")
-print(result)
-```
-
-### API REST
-```bash
-python src/create_production_api.py
-# API disponível em http://localhost:8080
-```
+- **Detecção de hate speech** com 40+ regras contextuais
+- **Classificação especializada** (Transfobia vs Assédio/Insulto)
+- **Análise de contexto** (positivo, negativo, neutro)
+- **Detecção de padrões** (orgulho, respeito, deboche)
+- **Palavrões cifrados** (p0rr4, car4lh0, etc.)
+- **Emojis contextuais** (apoio vs hate)
 
 ## 📊 Performance
 
-- **Acurácia Binária**: 80.14%
-- **Acurácia Especializada**: 99.17%
-- **Confiança Média**: 93.9%
-- **Taxa de Processamento**: 28.9 textos/segundo
+- **2.098 exemplos** analisados
+- **682 casos HATE** (32.5%)
+- **1.416 casos NÃO-HATE** (67.5%)
+- **89 falsos positivos** corrigidos
+- **13 novas regras** implementadas
 
-## 🔒 Privacidade
+## 🎯 Como Usar
 
-- Dados pessoais removidos durante treinamento
-- Apenas conteúdo linguístico preservado
-- Conformidade com LGPD/GDPR
+1. Digite ou cole o texto no campo de entrada
+2. Clique em "Analisar"
+3. Veja o resultado com:
+   - Classificação (HATE/NÃO-HATE)
+   - Probabilidade de hate
+   - Classe especializada
+   - Confiança
+   - Método usado
 
-## 📁 Estrutura
+## 🔧 Tecnologias
 
-- `model-binary-expanded/`: Modelo binário treinado
-- `model-specialized-expanded/`: Modelo especializado treinado
-- `src/predict_hate_speech.py`: Script de predição
-- `src/create_production_api.py`: API REST
-- `requirements.txt`: Dependências
+- **PyTorch** + **Transformers**
+- **BERTimbau** (modelos binário e especializado)
+- **Gradio** (interface web)
+- **40+ regras contextuais** personalizadas
 
-## 🤝 Contribuição
+## 📈 Melhorias Implementadas
 
-Contribuições são bem-vindas! Veja o projeto de datasets para dados de treinamento.
+- ✅ Emoji sozinho não é mais hate
+- ✅ Contexto positivo com emojis de apoio
+- ✅ Padrões de orgulho LGBTQIA+
+- ✅ Padrões de respeito e aceitação
+- ✅ Palavrões em contexto positivo
+- ✅ Disguised_hate_rule melhorada
+- ✅ Excessive_punctuation_rule com contexto
+- ✅ Palavrões cifrados
+- ✅ Termos patologizantes com risadas
+- ✅ Risadas de deboche com termos ofensivos
+
+## 🌐 Links
+
+- **GitHub**: https://github.com/travahacker/radar-social-lgbtqia
+- **Hugging Face**: https://huggingface.co/Veronyka/radar-social-lgbtqia
+- **Space**: https://huggingface.co/spaces/Veronyka/radar-social-lgbtqia-space
 
 ## 📄 Licença
 
 MIT License - Veja LICENSE para detalhes.
-
-## 🔗 Links Relacionados
-
-### 📚 Projetos
-- [Base de Dados de Ódio LGBTQIA+](https://github.com/travahacker/base-dados-odio-lgbtqia)
-- [Hugging Face Model](https://hf.co/Veronyka/radar-social-lgbtqia)
-- [Hugging Face Dataset](https://hf.co/datasets/Veronyka/base-dados-odio-lgbtqia)
-
-### 🏳️‍🌈 Código Não Binário
-- [Site Oficial](https://codigonaobinario.org)
-- [Entre Amigues - Linktree](https://linktr.ee/entre_amigues)
-
-## 📊 Datasets Utilizados no Treinamento
-
-### Modelos Base
-- **BERTimbau**: https://hf.co/neuralmind/bert-base-portuguese-cased
-- **Helsinki-NLP Translation**: https://hf.co/Helsinki-NLP/opus-mt-tc-big-en-pt
-
-### Datasets Externos
-- **ToLD-BR**: https://github.com/joaoaleite/ToLD-Br/
-- **Anti-LGBT Cyberbullying**: https://www.kaggle.com/datasets/kw5454331/anti-lgbt-cyberbullying-texts/data
-
-### Dataset de Treinamento do BERTimbau
-- **HateBR**: https://hf.co/datasets/ruanchaves/hatebr (excluído por data leakage)
-
-### Fontes dos Dados
-- **Dados manuais**: Anotações da equipe Código Não Binário sobre o podcast Entre Amigues
-- **ToLD-BR**: Dataset brasileiro de toxicidade (GitHub)
-- **Anti-LGBT**: Dataset inglês traduzido para PT-BR (Kaggle)

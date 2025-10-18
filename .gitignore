@@ -62,6 +62,7 @@ checkpoint-*/
 # Data files (if too large)
 *.csv
 *.pkl
+!model-specialized-expanded/label_encoder.pkl
 *.joblib
 
 # Jupyter
