@@ -18,8 +18,10 @@ Sistema avançado de detecção de hate speech contra pessoas LGBTQIA+ em redes 
 
 ### Por Rede Social:
 - **Instagram**: 27.6% HATE (🟢 MUITO PRECISO)
-- **TikTok**: 37.4% HATE (🟡 BOM)
-- **YouTube**: 50.9% HATE (🔴 PROBLEMÁTICO)
+- **TikTok**: 37.4% HATE (🟡 PRECISA MELHORIAS)
+- **YouTube**: 50.9% HATE (🔴 PRECISA MELHORIAS)
+
+> ⚠️ **Nota**: TikTok e YouTube apresentam desempenho inferior e receberão atualizações em breve. O sistema já serve como solução inicial eficaz.
 
 ### Melhorias Implementadas:
 - ✅ Redução de 802 falsos positivos (-6.6%)
