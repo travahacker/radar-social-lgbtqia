@@ -1,73 +1,82 @@
----
-title: Radar Social LGBTQIA+
-emoji: 🏳️‍🌈
-colorFrom: pink
-colorTo: purple
-sdk: gradio
-sdk_version: 4.44.1
-app_file: app.py
-pinned: false
-license: mit
----
-
 # 🏳️‍🌈 Radar Social LGBTQIA+
 
-Sistema avançado de detecção de hate speech contra a comunidade LGBTQIA+ com regras contextuais inteligentes.
+Sistema avançado de detecção de hate speech contra pessoas LGBTQIA+ em redes sociais brasileiras com correções contextuais inteligentes.
 
 ## 🚀 Funcionalidades
 
-- **Detecção de hate speech** com 40+ regras contextuais
-- **Classificação especializada** (Transfobia vs Assédio/Insulto)
-- **Análise de contexto** (positivo, negativo, neutro)
-- **Detecção de padrões** (orgulho, respeito, deboche)
-- **Palavrões cifrados** (p0rr4, car4lh0, etc.)
-- **Emojis contextuais** (apoio vs hate)
+- **Detecção Inteligente**: Sistema ensemble com modelos especializados
+- **Múltiplas Redes Sociais**: Instagram, TikTok e YouTube
+- **Correções Contextuais**: Regras específicas para reduzir falsos positivos
+- **Análise Especializada**: Classificação em Assédio/Insulto e Transfobia
+- **Interface Amigável**: Gradio app para teste interativo
 
-## 📊 Performance
+## 📊 Resultados Finais Validados
 
-- **2.098 exemplos** analisados
-- **682 casos HATE** (32.5%)
-- **1.416 casos NÃO-HATE** (67.5%)
-- **89 falsos positivos** corrigidos
-- **13 novas regras** implementadas
+### Análise Completa (12.102 comentários):
+- **HATE**: 4.825 casos (39.9%)
+- **NÃO-HATE**: 7.277 casos (60.1%)
+
+### Por Rede Social:
+- **Instagram**: 27.6% HATE (🟢 MUITO PRECISO)
+- **TikTok**: 37.4% HATE (🟡 BOM)
+- **YouTube**: 50.9% HATE (🔴 PROBLEMÁTICO)
+
+### Melhorias Implementadas:
+- ✅ Redução de 802 falsos positivos (-6.6%)
+- ✅ Correção de pontuação excessiva
+- ✅ Proteção de linguagem neutra
+- ✅ Contexto de risadas simples
+- ✅ Detecção de emojis de apoio
 
 ## 🎯 Como Usar
 
-1. Digite ou cole o texto no campo de entrada
-2. Clique em "Analisar"
-3. Veja o resultado com:
-   - Classificação (HATE/NÃO-HATE)
-   - Probabilidade de hate
-   - Classe especializada
-   - Confiança
-   - Método usado
+1. **Teste Individual**: Digite um comentário na interface
+2. **Análise em Lote**: Use os scripts Python fornecidos
+3. **API**: Integre via `predict_hate_speech(text)`
 
-## 🔧 Tecnologias
+## 🔧 Métodos de Detecção
 
-- **PyTorch** + **Transformers**
-- **BERTimbau** (modelos binário e especializado)
-- **Gradio** (interface web)
-- **40+ regras contextuais** personalizadas
+1. **model_prediction** (68.6%): Modelo ensemble principal
+2. **laughter_context_neutral_rule** (5.9%): Contexto de risadas
+3. **religious_moralism_rule** (4.3%): Moralismo religioso
+4. **supportive_emoji_rule** (2.9%): Emojis de apoio
+5. **curse_words_rule** (2.0%): Palavrões contextuais
 
-## 📈 Melhorias Implementadas
+## 📈 Impacto das Correções
 
-- ✅ Emoji sozinho não é mais hate
-- ✅ Contexto positivo com emojis de apoio
-- ✅ Padrões de orgulho LGBTQIA+
-- ✅ Padrões de respeito e aceitação
-- ✅ Palavrões em contexto positivo
-- ✅ Disguised_hate_rule melhorada
-- ✅ Excessive_punctuation_rule com contexto
-- ✅ Palavrões cifrados
-- ✅ Termos patologizantes com risadas
-- ✅ Risadas de deboche com termos ofensivos
+**ANTES**: 46.5% HATE, 53.5% NÃO-HATE  
+**DEPOIS**: 39.9% HATE, 60.1% NÃO-HATE  
+**MELHORIA**: -6.6% falsos positivos corrigidos
+
+## 🔬 Tecnologias
+
+- **Transformers**: BERTimbau e modelos especializados
+- **Gradio**: Interface web interativa
+- **Pandas**: Análise de dados
+- **Scikit-learn**: Métricas e avaliação
+
+## 📁 Arquivos Principais
+
+- `app_space_version.py`: Sistema principal
+- `analyze_all_datasets_corrected.py`: Análise completa corrigida
+- `create_detailed_final_report.py`: Relatório detalhado
+- `clean-annotated-data/`: Dados limpos das redes sociais
+- `out/`: Resultados das análises mais recentes
 
 ## 🌐 Links
 
 - **GitHub**: https://github.com/travahacker/radar-social-lgbtqia
-- **Hugging Face**: https://huggingface.co/Veronyka/radar-social-lgbtqia
-- **Space**: https://huggingface.co/spaces/Veronyka/radar-social-lgbtqia-space
+- **Hugging Face Space**: https://huggingface.co/spaces/Veronyka/radar-social-lgbtqia-space
+- **Modelos**: https://huggingface.co/Veronyka/radar-social-lgbtqia
 
 ## 📄 Licença
 
 MIT License - Veja LICENSE para detalhes.
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Veja os arquivos de documentação para mais detalhes.
+
+---
+
+*Desenvolvido com ❤️ para combater o hate speech contra pessoas LGBTQIA+*

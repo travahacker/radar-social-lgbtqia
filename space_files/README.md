@@ -13,7 +13,7 @@ short_description: Sistema de detecção de hate speech LGBTQIA+
 
 # 🏳️‍🌈 Radar Social LGBTQIA
 
-Sistema avançado de detecção de hate speech contra pessoas LGBTQIA+ em redes sociais brasileiras.
+Sistema avançado de detecção de hate speech contra pessoas LGBTQIA+ em redes sociais brasileiras com correções contextuais inteligentes.
 
 ## 🚀 Funcionalidades
 
@@ -23,16 +23,16 @@ Sistema avançado de detecção de hate speech contra pessoas LGBTQIA+ em redes 
 - **Análise Especializada**: Classificação em Assédio/Insulto e Transfobia
 - **Interface Amigável**: Gradio app para teste interativo
 
-## 📊 Resultados Atuais
+## 📊 Resultados Finais Validados
 
 ### Análise Completa (12.102 comentários):
 - **HATE**: 4.825 casos (39.9%)
 - **NÃO-HATE**: 7.277 casos (60.1%)
 
 ### Por Rede Social:
-- **Instagram**: 27.6% HATE (mais preciso)
-- **TikTok**: 37.4% HATE
-- **YouTube**: 50.9% HATE (ainda problemático)
+- **Instagram**: 27.6% HATE (🟢 MUITO PRECISO)
+- **TikTok**: 37.4% HATE (🟡 BOM)
+- **YouTube**: 50.9% HATE (🔴 PROBLEMÁTICO)
 
 ### Melhorias Implementadas:
 - ✅ Redução de 802 falsos positivos (-6.6%)
@@ -64,8 +64,8 @@ Sistema avançado de detecção de hate speech contra pessoas LGBTQIA+ em redes 
 
 ## 📈 Impacto das Correções
 
-**ANTES**: 46.5% HATE, 53.5% NÃO-HATE
-**DEPOIS**: 39.9% HATE, 60.1% NÃO-HATE
+**ANTES**: 46.5% HATE, 53.5% NÃO-HATE  
+**DEPOIS**: 39.9% HATE, 60.1% NÃO-HATE  
 **MELHORIA**: -6.6% falsos positivos corrigidos
 
 ## 🔬 Tecnologias
