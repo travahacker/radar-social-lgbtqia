@@ -64,12 +64,26 @@ Sistema avançado de detecção de hate speech contra pessoas LGBTQIA+ em redes 
 - `create_detailed_final_report.py`: Relatório detalhado
 - `clean-annotated-data/`: Dados limpos das redes sociais
 - `out/`: Resultados das análises mais recentes
+- `datasets/`: Datasets consolidados das três redes sociais
+
+## 📊 Dataset das Três Redes Sociais
+
+### Estatísticas Consolidadas (20/10/2025):
+- **Total**: 12.102 comentários
+- **Instagram**: 2.098 comentários
+- **TikTok**: 6.271 comentários
+- **YouTube**: 3.733 comentários
+
+### Arquivos Disponíveis:
+- `dataset_three_platforms_20251020_140406.csv`: Dataset completo com metadados
+- `dataset_three_platforms_clean_20251020_140406.csv`: Dataset limpo (apenas texto e ID)
 
 ## 🌐 Links
 
 - **GitHub**: https://github.com/travahacker/radar-social-lgbtqia
 - **Hugging Face Space**: https://huggingface.co/spaces/Veronyka/radar-social-lgbtqia-space
 - **Modelos**: https://huggingface.co/Veronyka/radar-social-lgbtqia
+- **Dataset**: https://huggingface.co/datasets/Veronyka/base-dados-odio-lgbtqia
 
 ## 📄 Licença
 
